@@ -39,6 +39,9 @@ public class Application {
 
     spliters="["+spliters+"]"; //정규식 검사를 위한 그룹화
     // System.out.println("구분자 : "+spliters);
+    if (inputString.isEmpty())  {
+      throw new IllegalArgumentException("커스텀 구분자 설정 외에 값이 입력되지 않았습니다.");
+    }
     // 3.구분자 기준으로 문자열 분리
     String[] tokens = inputString.split(spliters);
     for (String token : tokens) {
@@ -58,6 +61,9 @@ public class Application {
       catch (NumberFormatException e) {
         throw new IllegalArgumentException("입력값에 문제가 발생했습니다.");
       }
+    }
+    if (result<0) {
+      throw new IllegalArgumentException("입력값이 너무 큽니다.");
     }
     System.out.println("결과 : " + result); //결과 출력
   }
